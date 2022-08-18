@@ -28,7 +28,7 @@ jobs:
         uses: vmactions/ngrok-tunnel@v0.0.1
         with:
           protocol: http
-          port: 8800
+          port: 80
 
       - name: Run the script
         run: |

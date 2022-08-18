@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
-const port = 8800;
+const port = 80;
 const { Server } = require('socket.io'); 
 //console.log(coreGame);
 let server = require("http").createServer(app);
 app.use(express.static('public'));
+
 
 
 let io = require('socket.io')(server);
