@@ -9,11 +9,17 @@
         <canvas id="canvas" class="genericCanvas" width="530px" height="530px"></canvas>
 
         <script>
-            let ownIp = "";
-            //get own ip address
-            $.getJSON("https://api.ipify.org?format=json", function(data) {
-                ownIp = data.ip;
-            });
+            //get own ip address without jquery or ajax by making a request to ipify.org
+            //await response
+            function getIPsync(){
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://api.ipify.org?format=json', false);
+                xhr.send();
+                return JSON.parse(xhr.responseText).ip;
+            }
+            var ownIp = getIPsync();
+
+
 
             //get canvas
             var canvas = document.getElementById('canvas');
