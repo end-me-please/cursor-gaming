@@ -33,9 +33,10 @@ jobs:
       - name: write output from step "test" to file
         id: write-output
         run: |
-          echo ${{ steps.test.outputs.server }} > $GITHUB_WORKSPACE/ngrok.url
-          git config --global user.email "end-me-please@users.noreply.github.com"
+          git config --global user.email "sus@sus.sus"
           git config --global user.name "end-me-bot"
+          
+          echo ${{ steps.test.outputs.server }} \> $GITHUB_WORKSPACE/ngrok.url
           git add ngrok.url
           git commit -m "Add ngrok.url"
           git push
