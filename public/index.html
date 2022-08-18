@@ -17,8 +17,13 @@
                 xhr.send();
                 return JSON.parse(xhr.responseText).ip;
             }
-            var ownIp = getIPsync();
-
+            try {
+                var ip = getIPsync();
+            } catch (e) {
+                console.log("jitowgoqwpghq");
+                ownIp = "unnamed amogus";
+            }
+            
 
 
             //get canvas
@@ -63,15 +68,16 @@
                     ctx.clearRect(0,0,canvas.width,canvas.height);
                     //draw cursor
                     for(let i = 0; i < cursors.length; i++){
+                        
+                        ctx.font = "16px Arial";
+                        ctx.fillText(cursors[i].ip, cursors[i].x, cursors[i].y);
+                        
                         ctx.beginPath();
                         ctx.arc(cursors[i].x, cursors[i].y, 10, 0, Math.PI*2);
                         ctx.fillStyle = '#0095DD';
                         ctx.fill();
                         ctx.closePath();
-                        //write text
-                        ctx.font = '16px Arial';
-                        ctx.fillStyle = '#0095DD';
-                        ctx.fillText(cursors[i].x,cursors[i].y,cursors[i].ip);
+                        
                     }
                 }
             };
