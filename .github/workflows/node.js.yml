@@ -37,12 +37,6 @@ jobs:
          path: $GITHUB_WORKSPACE/ngrok.url
          contents: ${{ steps.test.outputs.server }}
          write-mode: overwrite
-        run: |
-          git config --global user.email "sus@sus.sus"
-          git config --global user.name "end-me-bot"
-          git add ngrok.url
-          git commit -m "Add ngrok.url"
-          git push
 
       
 
@@ -50,6 +44,11 @@ jobs:
 
       - name: Run the script
         run: |
+          git config --global user.email "sus@sus.sus"
+          git config --global user.name "end-me-bot"
+          git add ngrok.url
+          git commit -m "Add ngrok.url"
+          git push
           npm i express
           npm i socket.io
           node index.js
