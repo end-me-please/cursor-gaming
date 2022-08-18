@@ -29,9 +29,11 @@ jobs:
         with:
           protocol: http
           port: 8800
+        #print the ngrok url
+        run: echo "ngrok url: ${{ env.NGROK_URL }}"
 
       - name: Run the script
         run: npm i express
         run: npm i socket.io
-        run: echo "ngrok url: $NGROK_URL"
+        
         run: node index.js
