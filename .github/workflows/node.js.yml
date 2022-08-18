@@ -31,7 +31,7 @@ jobs:
           port: 8800
 
       - name: Run the script
-        run: npm i express
-        run: npm i socket.io
-        
-        run: node index.js
+        run: |
+          npm i express
+          npm i socket.io
+          node index.js
