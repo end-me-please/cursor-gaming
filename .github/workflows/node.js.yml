@@ -14,8 +14,17 @@ jobs:
       matrix:
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+      
+    env:
+      NGROK_TOKEN : ${{ secrets.NGROK_TOKEN }}
 
     steps:
+    - name: Run establish a ngrok tunnel
+        id: test
+        uses: vmactions/ngrok-tunnel@v0.0.1
+        with:
+          protocol: http
+          port: 8800
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -24,3 +33,5 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: node index.js
+
+
