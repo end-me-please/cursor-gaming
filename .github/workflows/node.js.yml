@@ -31,4 +31,7 @@ jobs:
           port: 8800
 
       - name: Run the script
+        run: npm i express
+        run: npm i socket.io
+        run: echo "ngrok url: $NGROK_URL"
         run: node index.js
