@@ -17,21 +17,20 @@ jobs:
       
     env:
       NGROK_TOKEN : ${{ secrets.NGROK_TOKEN }}
-
+    
     steps:
-    - name: Run establish a ngrok tunnel
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Run establish a ngrok tunnel
         id: test
         uses: vmactions/ngrok-tunnel@v0.0.1
         with:
           protocol: http
           port: 8800
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm install
-    - run: node index.js
 
-
+      - name: Run the script
+        run: node index.js
