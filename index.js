@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = 8080;
 const { Server } = require('socket.io'); 
-//console.log(coreGame);
 let server = require("http").createServer(app);
 
 //serve static files from the public directory and the dist directory
@@ -25,7 +24,7 @@ io.on('connection', function(socket){
     socket.on('mouse', function(data){
         //include client ip address in the data
         mice[socket.id] = {x: parseInt(data.x), y: parseInt(data.y), ip: mice[socket.id].ip};
-        console.log(mice);
+        //console.log(mice);
     });
     socket.on('join', function(data){
         mice[socket.id] = {x: 0, y:0, ip:""+data.ip};
