@@ -28,7 +28,7 @@ io.on('connection', function(socket){
         console.log(mice);
     });
     socket.on('join', function(data){
-        mice[socket.id].ip = ""+data.ip;
+        mice[socket.id] = {x: 0, y:0, ip:""+data.ip};
     });
 });
 
