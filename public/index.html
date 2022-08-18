@@ -9,6 +9,11 @@
         <canvas id="canvas" class="genericCanvas" width="530px" height="530px"></canvas>
 
         <script>
+            let ownIp = "";
+            //get own ip address
+            $.getJSON("https://api.ipify.org?format=json", function(data) {
+                ownIp = data.ip;
+            });
 
             //get canvas
             var canvas = document.getElementById('canvas');
@@ -26,6 +31,9 @@
             
             socket.on('connect', function() {
                 console.log('connected');
+                socket.emit('join', {
+                    ip: ownIp
+                });
                 gameActive = true;
             });
 
