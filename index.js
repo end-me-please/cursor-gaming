@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 80;
+const port = 8080;
 const { Server } = require('socket.io'); 
 //console.log(coreGame);
 let server = require("http").createServer(app);
