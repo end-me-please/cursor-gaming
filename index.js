@@ -4,7 +4,7 @@ const port = 8080;
 const { Server } = require('socket.io'); 
 //console.log(coreGame);
 let server = require("http").createServer(app);
-app.use(express.static('public'));
+app.use(express.static('/public'));
 
 
 
