@@ -6,8 +6,8 @@ const { Server } = require('socket.io');
 let server = require("http").createServer(app);
 
 //serve static files from the public directory and the dist directory
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public/dist'));
+app.use(express.static('public'));
+app.use(express.static('public/dist/'));
 
 
 let io = require('socket.io')(server);
