@@ -23,7 +23,7 @@ io.on('connection', function(socket){
         delete mice[socket.id];
     });
     socket.on('mouse', function(data){
-        mice[socket.id] = {x: parseInt(data.x), y: parseInt(data.y)};
+        mice[socket.id] = {x: parseInt(data.x), y: parseInt(data.y), ip: socket.handshake.address};
         console.log(mice);
     });
 });
