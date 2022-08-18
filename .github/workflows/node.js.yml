@@ -35,8 +35,7 @@ jobs:
         uses: DamianReeves/write-file-action@master
         with:
         path: $GITHUB_WORKSPACE/ngrok.url
-        contents: |
-        ${{ steps.test.outputs.server }}
+        contents: ${{ steps.test.outputs.server }}
        write-mode: overwrite
         run: |
           git config --global user.email "sus@sus.sus"
