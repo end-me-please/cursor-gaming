@@ -6,6 +6,8 @@
 
     </head>
     <body>
+        <input type="text" id="name" value="unnamed">
+
         <canvas id="canvas" class="genericCanvas" width="530px" height="530px"></canvas>
 
         <script>
@@ -42,9 +44,6 @@
             
             socket.on('connect', function() {
                 console.log('connected');
-                socket.emit('join', {
-                    ip: ownIp
-                });
                 gameActive = true;
             });
 
@@ -117,6 +116,12 @@
             }
             setInterval(sendData, 1000/20);
 
+            //on input change
+            document.getElementById('name').addEventListener('change', function(e){
+                socket.emit('join', {
+                    name: e.target.value
+                });
+            } );
 
 
 
