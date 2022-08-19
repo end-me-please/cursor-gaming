@@ -14,6 +14,9 @@ let io = require('socket.io')(server);
 let users = {};
 let mice = {};
 io.on('connection', function(socket){
+    socket.on('join', function(joinData){
+    mice[socket.id] = {x: 0, y:0, name:""+joinData.name};
+
     console.log('a user connected');
     users[socket.id] = socket;
     socket.on('disconnect', function(){
@@ -22,12 +25,8 @@ io.on('connection', function(socket){
         delete mice[socket.id];
     });
     socket.on('mouse', function(data){
-        //include client ip address in the data
-        mice[socket.id] = {x: parseInt(data.x), y: parseInt(data.y), ip: mice[socket.id].ip+""};
-        //console.log(mice);
+        mice[socket.id] = {x: parseInt(data.x), y: parseInt(data.y), name: mice[socket.id].name};
     });
-    socket.on('join', function(data){
-        mice[socket.id] = {x: 0, y:0, ip:""+data.ip};
     });
 });
 

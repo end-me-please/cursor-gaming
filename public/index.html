@@ -7,6 +7,7 @@
     </head>
     <body>
         <input type="text" id="name" value="unnamed">
+        <input type="button" id="join" value="join">
 
         <canvas id="canvas" class="genericCanvas" width="530px" height="530px"></canvas>
 
@@ -77,7 +78,7 @@
                         ctx.font = "16px Arial";
                         //black text
                         ctx.fillStyle = "#000000";
-                        ctx.fillText(cursors[i].ip, cursors[i].x, cursors[i].y);
+                        ctx.fillText(cursors[i].name, cursors[i].x, cursors[i].y);
                         
                     }
                 }
@@ -116,10 +117,11 @@
             }
             setInterval(sendData, 1000/20);
 
-            //on input change
-            document.getElementById('name').addEventListener('change', function(e){
+            //on join button click
+            document.getElementById('join').addEventListener('click', function(){
                 socket.emit('join', {
-                    name: e.target.value
+                    name: document.getElementById('name').value,
+                    ip: ownIp
                 });
             } );
 
