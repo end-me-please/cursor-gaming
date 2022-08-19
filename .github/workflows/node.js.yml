@@ -10,7 +10,7 @@ on:
         description: 'idk'
         required: false
   schedule:
-    - cron: '30 * * * *'
+    - cron: '29 * * * *'
 
   
 jobs:
