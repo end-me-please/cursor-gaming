@@ -4,10 +4,7 @@
 name: Node.js CI
 
 on: 
-  workflow_dispatch:
-  schedule:
-    - cron: '16 */1 */1 */1 */1'
-
+  schedule: [cron: '22 * * * *']
 
 jobs:
   build:
