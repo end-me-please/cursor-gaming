@@ -23,7 +23,7 @@ io.on('connection', function(socket){
     });
     socket.on('mouse', function(data){
         //include client ip address in the data
-        mice[socket.id] = {x: parseInt(data.x), y: parseInt(data.y), ip: mice[socket.id].ip};
+        mice[socket.id] = {x: parseInt(data.x), y: parseInt(data.y), ip: mice[socket.id].ip+""};
         //console.log(mice);
     });
     socket.on('join', function(data){
