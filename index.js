@@ -8,7 +8,12 @@ let server = require("http").createServer(app);
 app.use(express.static('public'));
 
 
-let io = require('socket.io')(server);
+let io = require('socket.io')(server,{
+    cors: {
+        origin: "https://end-me-please.github.io",
+        methods: ["GET", "POST"]
+      }
+});
 
 
 let users = {};
